@@ -1,11 +1,16 @@
-def odometr(oksana: list[int]) -> int:
-    result = 0
+def odometer(oksana: list[int]) -> int:
+    sammary_km = 0
 
     for hour in range(1, len(oksana), 2):
         if hour != 1:
             summ_hour = oksana[hour-1] * (oksana[hour] - oksana[hour-2])
         else:
             summ_hour = oksana[hour-1] * oksana[hour]
-        result += summ_hour
-    return result
+        sammary_km += summ_hour
+        print(summ_hour)
+    return sammary_km
 
+
+oksana = [20, 2, 30, 6, 10, 7]
+
+print(odometr(oksana))
