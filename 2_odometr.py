@@ -7,10 +7,4 @@ def odometer(oksana: list[int]) -> int:
         else:
             summ_hour = oksana[hour-1] * oksana[hour]
         sammary_km += summ_hour
-        print(summ_hour)
     return sammary_km
-
-
-oksana = [20, 2, 30, 6, 10, 7]
-
-print(odometr(oksana))
