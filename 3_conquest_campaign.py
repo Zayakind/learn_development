@@ -65,7 +65,6 @@ def ConquestCampaign(N: int, M: int, L: int, battalion: list) -> int:
     while True:
         day += 1
         maps, status = detour_square(maps)
-        print(maps)
         if status:
             break
 
