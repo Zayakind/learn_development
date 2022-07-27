@@ -49,22 +49,28 @@ def detour_square(square: list[list]) -> tuple[list[list], bool]:
 
 def started_point(L: int, battalion: list, square: list[list]) -> list[list]:
 
-    for i in range(0, L+1, 2):
-        x, y = battalion[i] - 1, battalion[i+1] - 1
-        square[x][y] = 1
+    temp = 0
+
+    for _ in range(L):
+        n, m = battalion[temp] - 1, battalion[temp+1] - 1
+        square[n][m] = 1
+        temp += 2
 
     return square
 
 
 def ConquestCampaign(N: int, M: int, L: int, battalion: list) -> int:
 
-    day = 1
+    day = 0
     maps = generated_square(N, M)
-    started_point(L, battalion, maps)
 
     while True:
-        day += 1
+        if day == 0:
+            started_point(L, battalion, maps)
+            day += 1
+            continue
         maps, status = detour_square(maps)
+        day += 1
         if status:
             break
 
