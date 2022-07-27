@@ -68,6 +68,8 @@ def ConquestCampaign(N: int, M: int, L: int, battalion: list) -> int:
         if day == 0:
             started_point(L, battalion, maps)
             day += 1
+            if check_square(maps):
+                break
             continue
         maps, status = detour_square(maps)
         day += 1
@@ -75,3 +77,6 @@ def ConquestCampaign(N: int, M: int, L: int, battalion: list) -> int:
             break
 
     return day
+
+
+print(ConquestCampaign(2,3,6,[1,1,1,2,1,3,2,1,2,2,2,3]))
