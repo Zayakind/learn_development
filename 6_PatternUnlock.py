@@ -11,10 +11,14 @@ def PatternUnlock(N: int, hits: list[int]) -> str:
             if step in katet:
                 summ += 1.0
             if step in gipotenyza:
-                summ += 1.41421
-    summ = str(summ)
+                summ += 1.41421356237
+    summ = str(round(summ, 5))
     result = ''
     for i in summ:
         if i in '123456789':
             result += i
     return result
+
+
+hits = [1,2,3,4,5,6,2,7,8,9]
+print(PatternUnlock(len(hits), hits))
