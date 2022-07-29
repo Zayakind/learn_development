@@ -18,7 +18,3 @@ def PatternUnlock(N: int, hits: list[int]) -> str:
         if i in '123456789':
             result += i
     return result
-
-
-hits = [1,2,3,4,5,6,2,7,8,9]
-print(PatternUnlock(len(hits), hits))
