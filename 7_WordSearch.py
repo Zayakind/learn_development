@@ -5,7 +5,7 @@ def pars_string(result: list, data_str: str, lens: int) -> list[str]:
 
     for index, letter in enumerate(data_str):
         word += letter
-        if letter == ' ' or letter == data_str[-1]:
+        if letter == ' ' or letter == data_str[-1] or len(word) == lens:
             if data_str[index + 1:].find(' ') > lens - len(word) or data_str[index + 1:].find(' ') == -1:
                 result.append(word.strip())
                 word = ''
