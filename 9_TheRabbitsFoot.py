@@ -83,7 +83,6 @@ def TheRabbitsFoot(s: str, en_code: bool) -> str:
     str_no_space, lens = format_space_to_string(s)
     matrix = create_matrix(lens)
     if en_code:
-        return encode_string(matrix, str_no_space, en_code)
+        return encode_string(matrix, str_no_space, en_code).strip()
     else:
         return decode_string(s, lens, en_code)
-
