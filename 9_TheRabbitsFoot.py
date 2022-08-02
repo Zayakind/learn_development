@@ -87,8 +87,3 @@ def TheRabbitsFoot(s: str, en_code: bool) -> str:
     else:
         return decode_string(s, lens, en_code)
 
-
-string_encode = 'отдай мою кроличью лапку'
-string_decode = 'омоюу толл дюиа акчп йрьк'
-
-print(TheRabbitsFoot(string_decode, False))
