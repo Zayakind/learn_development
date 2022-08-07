@@ -4,7 +4,7 @@ def format_result(data: str) -> str:
     data = data[::-1]
 
     while True:
-        if data[0] == "0":
+        if data[0] == "0" and len(data) > 1:
             data = data[1:]
         else:
             break
@@ -51,3 +51,6 @@ def BigMinus(s1: str, s2: str) -> str:
     result = format_result(result)
 
     return result
+
+
+print(BigMinus('1234567890', '1234567890'))
