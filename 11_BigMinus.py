@@ -33,6 +33,11 @@ def BigMinus(s1: str, s2: str) -> str:
         reduced = list(s2[::-1])
         deductible = list(s1[::-1])
 
+    if len(reduced) == 1:
+        reduced = max(int(s1), int(s2))
+        deductible = min(int(s1), int(s2))
+        return f"{reduced - deductible}"
+
     for index, value in enumerate(reduced):
         if len(deductible) - 1 >= index:
             if int(value) < int(deductible[index]):
