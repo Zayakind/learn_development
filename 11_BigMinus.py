@@ -1,4 +1,17 @@
 
+def format_result(data: str) -> str:
+
+    data = data[::-1]
+
+    while True:
+        if data[0] == "0":
+            data = data[1:]
+        else:
+            break
+
+    return data
+
+
 def search_index(listed: list[str], index: int) -> int:
 
     while True:
@@ -20,8 +33,6 @@ def BigMinus(s1: str, s2: str) -> str:
         reduced = list(s2[::-1])
         deductible = list(s1[::-1])
 
-    temp = 0
-
     for index, value in enumerate(reduced):
         if len(deductible) - 1 >= index:
             if int(value) < int(deductible[index]):
@@ -32,15 +43,6 @@ def BigMinus(s1: str, s2: str) -> str:
             continue
         result += str(value)
 
-    result = result[::-1]
-
-    while True:
-        if result[0] == "0":
-            result = result[1:]
-        else:
-            break
+    result = format_result(result)
 
     return result
-
-
-print(BigMinus("111", "1000"))
