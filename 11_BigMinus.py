@@ -51,6 +51,3 @@ def BigMinus(s1: str, s2: str) -> str:
     result = format_result(result)
 
     return result
-
-
-print(BigMinus('1234567890', '1234567890'))
