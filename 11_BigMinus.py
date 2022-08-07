@@ -1,3 +1,46 @@
+
+def search_index(listed: list[str], index: int) -> int:
+
+    while True:
+        if listed[index] == 0:
+            index += 1
+        else:
+            break
+
+    return index
+
+
 def BigMinus(s1: str, s2: str) -> str:
-    result = abs(int(s1) - int(s2))
-    return f'"{result}"'
+
+    reduced = list(s1[::-1])
+    deductible = list(s2[::-1])
+    result = ''
+
+    if len(s1) < len(s2):
+        reduced = list(s2[::-1])
+        deductible = list(s1[::-1])
+
+    temp = 0
+
+    for index, value in enumerate(reduced):
+        if len(deductible) - 1 >= index:
+            if int(value) < int(deductible[index]):
+                index_next = search_index(reduced, index + 1)
+                reduced[index_next] = int(reduced[index_next]) - 1
+                value = int(value) + 10
+            result += str(int(value) - int(deductible[index]))
+            continue
+        result += str(value)
+
+    result = result[::-1]
+
+    while True:
+        if result[0] == "0":
+            result = result[1:]
+        else:
+            break
+
+    return result
+
+
+print(BigMinus("111", "1000"))
