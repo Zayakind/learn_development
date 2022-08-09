@@ -13,7 +13,13 @@ def MassVote(N: int, Votes: list[int]) -> str:
 
     if max_vote[1] > 50:
         return f"majority winner {max_vote[0]}"
-    elif 0 < max_vote[1] < 50:
+    elif 0 < max_vote[1] <= 50:
         return f"minority winner {max_vote[0]}"
     elif max_vote[1] == 0:
         return "no winner"
+
+
+example_list = [60, 10, 10, 15, 5]
+example_list_2 = [10, 10, 10, 45]
+
+print(MassVote(3, [23, 50, 27]))
