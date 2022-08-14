@@ -74,5 +74,3 @@ def Unmanned(L: int, N: int, track: list[list[int]]) -> int:
 
     return time_to_path
 
-
-print(Unmanned(10, 2, [[11,5,5],[15,2,2]]))
