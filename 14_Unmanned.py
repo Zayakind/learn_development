@@ -54,7 +54,8 @@ def Unmanned(L: int, N: int, track: list[list[int]]) -> int:
     while result_track[-1] != 0:
 
         section += 1
-        run_traffic_light(track, result_track)
+        if TrafficLight in result_track:
+            run_traffic_light(track, result_track)
         road_section = result_track[section - 1]
 
         if not isinstance(road_section, TrafficLight):
@@ -72,3 +73,6 @@ def Unmanned(L: int, N: int, track: list[list[int]]) -> int:
         continue
 
     return time_to_path
+
+
+print(Unmanned(10, 2, [[11,5,5],[15,2,2]]))
