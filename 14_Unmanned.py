@@ -21,19 +21,16 @@ def Unmanned(L: int, N: int, track: list[list[int]]) -> int:
         if not isinstance(road_section, dict):
             track[section - 1] = 0
             time_to_path += 1
-            print(track, time_to_path)
             continue
+
         if time_to_path - road_section['red'] < 0:
             track[section - 1] = 0
             time_to_path += road_section['red'] - time_to_path + 1
-            print(track, time_to_path)
             continue
+
         track[section - 1] = 0
         time_to_path += 1
-        print(track, time_to_path)
         continue
 
     return time_to_path
 
-
-print(Unmanned(10, 2, [[11, 5, 5], [15, 2, 2]]))
