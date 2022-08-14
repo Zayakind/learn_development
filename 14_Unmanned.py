@@ -1,4 +1,3 @@
-
 class TrafficLight(object):
 
     def __init__(self, red_gisnal, green_signal):
@@ -42,21 +41,30 @@ def created_track(lens: int, traffic_light: list[list[int]]) -> list[int, dict]:
 def run_traffic_light(traffic_light: list[list[int]], track):
 
     for value in traffic_light:
-        track[value[0] - 1].run()
+        if isinstance(track[value[0] - 1], TrafficLight):
+            track[value[0] - 1].run()
+
+
+def check_traffic_light(track: list[int, dict]) -> bool:
+
+    for item in track:
+        if isinstance(item, TrafficLight):
+            return True
+    return False
 
 
 def Unmanned(L: int, N: int, track: list[list[int]]) -> int:
-
     result_track = created_track(L, track)
     time_to_path = 0
     section = 0
 
-    while result_track[-1] != 0:
+    while section < L:
 
         section += 1
-        if TrafficLight in result_track:
+        if check_traffic_light(result_track):
             run_traffic_light(track, result_track)
         road_section = result_track[section - 1]
+        check_traffic_light(result_track)
 
         if not isinstance(road_section, TrafficLight):
             result_track[section - 1] = 0
@@ -68,9 +76,7 @@ def Unmanned(L: int, N: int, track: list[list[int]]) -> int:
             section -= 1
             continue
 
-        result_track[section] = 0
+        result_track[section - 1] = 0
         time_to_path += 1
-        continue
 
     return time_to_path
-
