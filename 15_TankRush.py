@@ -43,13 +43,3 @@ def TankRush(line_1: int, column_1: int, data_1: str, line_2: int, column_2: int
     first_map = create_map(line_1, column_1, data_1)
     second_map = create_map(line_2, column_2, data_2)
     return entry_map(first_map, second_map)
-
-
-print(TankRush(3, 3, '321 694 798', 2, 2, '69 98'))
-
-# 321
-# 694  x, y =  x + 1, y
-# 798
-
-# 69
-# 98
