@@ -10,6 +10,19 @@ def create_map(row: int, column: int, data: str) -> list[list[int]]:
     return result
 
 
+def check_valid(maps: list[list[int]], example: list[list[int]]) -> bool:
+
+    check = False
+    search = example[0][0]
+
+    for index_row, row in enumerate(maps):
+        for index_col, value_col in enumerate(row):
+            if value_col == search:
+                check = True
+
+    return check
+
+
 def entry_map(card: list[list[int]], example: list[list[int]]) -> bool:
 
     check = []
@@ -20,7 +33,7 @@ def entry_map(card: list[list[int]], example: list[list[int]]) -> bool:
             if str(value_example).strip('[]') in str(value_card).strip('[]'):
                 check.append(value_example) if value_example not in check else None
 
-    if check == example:
+    if check == example and check_valid(card, example):
         flag = True
 
     return flag
