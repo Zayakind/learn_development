@@ -17,7 +17,7 @@ def check_valid(maps: list[list[int]], example: list[list[int]]) -> bool:
 
     for index_row, row in enumerate(maps):
         for index_col, value_col in enumerate(row):
-            if value_col == search and maps[index_row + 1][index_col] == example[1][0]:
+            if row != maps[-1] and value_col == search and maps[index_row + 1][index_col] == example[1][0] and maps[index_row + 1][index_col + 1] == example[1][1]:
                 check = True
 
     return check
@@ -43,3 +43,13 @@ def TankRush(line_1: int, column_1: int, data_1: str, line_2: int, column_2: int
     first_map = create_map(line_1, column_1, data_1)
     second_map = create_map(line_2, column_2, data_2)
     return entry_map(first_map, second_map)
+
+
+print(TankRush(4, 6, '029402 560202 029694 780288', 2, 2, '02 94'))
+
+# 321
+# 694  x, y =  x + 1, y
+# 798
+
+# 69
+# 98
