@@ -15,7 +15,3 @@ def LineAnalysis(line: str) -> bool:
             check = False
 
     return check
-
-
-print(LineAnalysis("*"))
-
