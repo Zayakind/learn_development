@@ -3,8 +3,10 @@ from copy import copy
 
 def one_operation(data: list[int], number: int, index: int) -> list[int]:
 
-    while data[index] != number:
+    check_iter = 0
+    while data[index] != number and check_iter < 20:
         changed_data(data, number)
+        check_iter += 1
 
     return data
 
