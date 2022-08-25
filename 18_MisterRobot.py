@@ -1,21 +1,8 @@
-from copy import copy
 
+def changed_data(data: list[int], index: int) -> list[int]:
 
-def one_operation(data: list[int], number: int, index: int) -> list[int]:
-
-    check_iter = 0
-    while data[index] != number and check_iter < 20:
-        changed_data(data, number)
-        check_iter += 1
-
-    return data
-
-
-def changed_data(data: list[int], number: int) -> list[int]:
-
-    index = data.index(number)
     temp = [data[index - 2], data[index - 1], data[index]]
-    while temp[0] != number:
+    while temp[0] != min(temp):
         data.insert(index-2, data.pop(index - 1))
         data.insert(index-1, data.pop(index))
         temp = [data[index - 2], data[index - 1], data[index]]
@@ -26,17 +13,17 @@ def changed_data(data: list[int], number: int) -> list[int]:
 def MisterRobot(N: int, data: list[int]) -> bool:
 
     check = False
-    check_number = 1
-    sort_data = copy(data)
-    sort_data.sort()
+    sort_list = data[:]
+    sort_list.sort()
 
-    for index, value in enumerate(data):
-        if data == sort_data:
-            check = True
-            break
-        if value != check_number:
-            one_operation(data, check_number, index)
+    for num in range(N - 1, -1, -1):
+        if data[num] == N:
+            N -= 1
+            continue
+        changed_data(data, num)
+        N -= 1
 
-        check_number += 1
+    if sort_list == data:
+        check = True
 
     return check
