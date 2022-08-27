@@ -15,6 +15,8 @@ def ShopOLAP(N: int, items: list[str]) -> list[str]:
 
     for key, value in temp_dict.items():
         result.append(f'{key} {value}')
+
     result.sort()
+
     return result
 
