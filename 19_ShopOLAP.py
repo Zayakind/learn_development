@@ -18,5 +18,3 @@ def ShopOLAP(N: int, items: list[str]) -> list[str]:
     result.sort()
     return result
 
-
-print(ShopOLAP(5, ['dress1 5', 'handbug32 2', 'dress1 1', 'handbug23 2', 'handbug128 4']))
