@@ -35,6 +35,3 @@ def ShopOLAP(N: int, items: list[str]) -> list[str]:
     result = sort_list(temp_dict)
 
     return result
-
-
-print(ShopOLAP(8,['123 5','32 3','124 5','128 1','32 2','23 4','128 4','128 1']))
