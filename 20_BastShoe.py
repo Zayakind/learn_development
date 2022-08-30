@@ -96,5 +96,5 @@ def BastShoe(command: str) -> str:
             return example.str_now
 
 
-if '__name__' == '__main__':
+if __name__ == '__main__':
     example = Example()
