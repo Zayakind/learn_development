@@ -39,7 +39,7 @@ def seizure_of_territory(square: list[list[int]], day_war: int) -> int:
 
     for index_n, value_n in enumerate(double):
         for index_m, value_m in enumerate(value_n):
-            if value_m == 1:
+            if value_m > 0:
                 capture_area(square, index_n, index_m)
     day_war += 1
     if capture_success(square):
@@ -56,3 +56,6 @@ def ConquestCampaign(N: int, M: int, L: int, battalion: list) -> int:
     day_war = seizure_of_territory(square, day_war)
     return day_war
 
+
+if __name__ == "__main__":
+    print(ConquestCampaign(N=3, M=4, L=3, battalion=[2,2, 2,2, 3,4]))
