@@ -1,6 +1,31 @@
 from copy import deepcopy
 
 
+def odometer(oksana: list[int]) -> int:
+    result, last_time = 0, 0
+    for speed, time in zip(oksana[0::2], oksana[1::2]):
+        result += speed * (time - last_time)
+        last_time = time
+    return result
+
+
+def squirrel(n: int) -> int:
+    if n == 1 or n == 0:
+        return 1
+    factorial = 1
+    for i in range(2, n+1):
+        factorial *= i
+    while factorial > 10:
+        factorial = factorial // 10
+    return factorial
+
+
+def SynchronizingTables(N: int, ids: list[int], salary: list[int]) -> list[int]:
+    sort_ids, sort_salary = sorted(ids), sorted(salary)
+    table_ids_and_salary = dict(zip(sort_ids, sort_salary))
+    return [table_ids_and_salary[worker] for worker in ids]
+
+
 def capture_success(square: list[list[int]]) -> bool:
     for n in square:
         for m in n:
@@ -57,5 +82,6 @@ def ConquestCampaign(N: int, M: int, L: int, battalion: list) -> int:
     return day_war
 
 
-if __name__ == "__main__":
-    print(ConquestCampaign(N=3, M=4, L=3, battalion=[2,2, 2,2, 3,4]))
+def SumOfThe(N: int, data: list[int]) -> int:
+    result = [sym for sym in data if sum(data) - sym == sym]
+    return result[0]
