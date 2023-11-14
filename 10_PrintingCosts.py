@@ -16,9 +16,10 @@ def PrintingCosts(line: str) -> int:
     result = 0
 
     for letter in line:
+        if letter == ' ':
+            continue
         if not sell_toner.get(letter):
             result += 23
-        elif letter == ' ':
             continue
         result += sell_toner.get(letter)
 
