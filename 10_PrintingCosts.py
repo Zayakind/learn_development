@@ -13,15 +13,13 @@ sell_toner = {
 
 def PrintingCosts(line: str) -> int:
 
-    consumption = 0
+    result = 0
 
     for letter in line:
-        if sell_toner.get(letter):
-            consumption += sell_toner[letter]
-            continue
+        if not sell_toner.get(letter):
+            result += 23
         elif letter == ' ':
             continue
-        consumption += 23
+        result += sell_toner.get(letter)
 
-    return consumption
-
+    return result
