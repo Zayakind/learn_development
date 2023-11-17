@@ -18,8 +18,3 @@ def MassVote(N: int, Votes: list[int]) -> str:
     elif max_vote[1] == 0:
         return "no winner"
 
-
-example_list = [60, 10, 10, 15, 5]
-example_list_2 = [10, 10, 10, 45]
-
-print(MassVote(2, [100, 99]))
