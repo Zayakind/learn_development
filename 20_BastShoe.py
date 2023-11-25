@@ -1,123 +1,83 @@
 class Lapot:
 
-    def __init__(self):
-        self.str_now = ""
-        self.history = []
-        self.undo_chain = []
-        self.redo_chain = []
-        self.last_operation = ""
+    def __init__(self) -> None:
+        self.current_str = ''
+        self.states = ['']
+        self.last_command = None
+        self.count_undo = True
+        self.undo_states = []
 
-    def add(self, add_string: str) -> None:
-        self._check_operation()
-        result = f"{self.str_now}{add_string}"
-        self.undo_chain.append(["1", {"old": self.str_now, "new": result}])
-        self.str_now = result
+    def add(self, addition_str: str) -> str:
+        self.current_str += addition_str
+        self.states.append(self.current_str)
+        self.count_undo += 1
 
-    def delete(self, count: int) -> None:
-        self._check_operation()
-        result = self.str_now[:(-count)]
-        if count > len(self.str_now):
-            self.undo_chain.append(["2", {"old": self.str_now, "new": ""}])
-            self.str_now = ""
-            return
-        self.undo_chain.append(["2", {"old": self.str_now, "new": result}])
-        self.str_now = result
+        if self.last_command == 'undo':
+            self.count_undo = 1
+            self.undo_states = []
+        self.last_command = 'add'
+        return self.current_str
 
-    def issue(self, index: int) -> str:
-        if index > len(self.str_now):
-            return ""
-        return self.str_now[index]
+    def remove(self, count_remove: int) -> str:
+        if count_remove > len(self.current_str):
+            self.current_str = ''
+            self.states.append(self.current_str)
+            return self.current_str
 
-    def undo(self) -> None:
-        result = self.undo_chain[0]
-        if len(self.undo_chain) > 1:
-            result = self.undo_chain.pop(-1)
-        self.str_now = result[1]["old"]
-        self.redo_chain.append(result)
+        self.current_str = self.current_str[
+                           :len(self.current_str) - count_remove
+                           ]
+        self.states.append(self.current_str)
+        self.count_undo += 1
 
-    def redo(self) -> None:
-        result = self.redo_chain.pop(-1)
-        self.str_now = result[1]["new"]
+        if self.last_command == 'undo':
+            self.count_undo = 1
+            self.undo_states = []
+        self.last_command = 'remove'
+        return self.current_str
 
-    def _check_operation(self) -> None:
-        if self.last_operation == "4":
-            self.undo_chain = self.undo_chain[-1]
-            self.redo_chain.clear()
+    def get(self, index: int) -> str:
+        if index >= len(self.current_str):
+            return ''
+        return self.current_str[index]
 
-    def now_operation(self, operation: str) -> None:
-        lapot.last_operation = operation
-        lapot.history.append(operation)
+    def undo(self) -> str:
+        self.last_command = 'undo'
+        if self.count_undo == 0:
+            return self.current_str
+        self.count_undo -= 1
+        self.undo_states.append(self.states.pop())
+        if not self.states:
+            return ''
+        self.current_str = self.states[-1]
+        return self.current_str
+
+    def redo(self) -> str:
+        if self.last_command != 'undo' or not self.undo_states:
+            return self.current_str
+        self.count_undo += 1
+        self.current_str = self.undo_states.pop()
+        self.states.append(self.current_str)
+        return self.current_str
+
+    def run_command(self, num_command, param) -> str:
+        if num_command not in ['1', '2', '3', '4', '5']:
+            return self.current_str
+        if num_command == '1':
+            return self.add(addition_str=param)
+        if num_command == '2':
+            return self.remove(count_remove=int(param))
+        if num_command == '3':
+            return self.get(index=int(param))
+        if num_command == '4':
+            return self.undo()
+        return self.redo()
 
 
 lapot = Lapot()
 
 
 def BastShoe(command: str) -> str:
-
-    if len(command) > 1:
-        numb_command, changed = command.split(' ', 1)
-    else:
-        numb_command, changed = command, ""
-
-    match numb_command:
-        case "1":
-            lapot.now_operation("1")
-            lapot.add(changed)
-            return lapot.str_now
-        case "2":
-            lapot.now_operation("2")
-            lapot.delete(int(changed))
-            return lapot.str_now
-        case "3":
-            lapot.now_operation("3")
-            return lapot.issue(int(changed))
-        case "4":
-            lapot.now_operation("4")
-            lapot.undo()
-            return lapot.str_now
-        case "5":
-            lapot.now_operation("5")
-            lapot.redo()
-            return lapot.str_now
-        case _:
-            return lapot.str_now
-
-
-# BastShoe("1 Привет")
-# BastShoe("1 , Мир!")
-# BastShoe("1 ++")
-# BastShoe("2 2")
-# BastShoe("4")
-# BastShoe("4")
-# BastShoe("1 *")
-# BastShoe("4")
-# BastShoe("4")
-# BastShoe("4")
-# BastShoe("3 6")
-# BastShoe("2 100")
-# BastShoe("1 Привет")
-# BastShoe("1 , Мир!")
-# BastShoe("1 ++")
-# BastShoe("4")
-# BastShoe("4")
-# BastShoe("5")
-# BastShoe("4")
-# BastShoe("5")
-# BastShoe("5")
-# BastShoe("5")
-# BastShoe("5")
-# BastShoe("4")
-# BastShoe("4")
-# BastShoe("2 2")
-# BastShoe("4")
-# BastShoe("5")
-# BastShoe("5")
-# print(BastShoe("5"))
-# print(BastShoe(""))
-# print(BastShoe(""))
-# print(BastShoe(""))
-# print(BastShoe(""))
-# print(BastShoe(""))
-# print(BastShoe(""))
-# print(BastShoe(""))
-# print(BastShoe(""))
+    """Function for run command for management of text editor"""
+    num_command, param = command[0], command[1:].strip()
+    return lapot.run_command(num_command, param)
