@@ -71,6 +71,7 @@ class Example:
 
 
 def BastShoe(command: str) -> str:
+    example = Example()
 
     if len(command) > 1:
         numb_command, changed = command.split(' ', 1)
@@ -94,7 +95,3 @@ def BastShoe(command: str) -> str:
             return example.str_now
         case _:
             return example.str_now
-
-
-if __name__ == '__main__':
-    example = Example()
