@@ -15,3 +15,7 @@ def test_3():
 
 def test_4():
     assert exponentiation(0, 0) == 1
+
+
+def test_5():
+    assert exponentiation(-3, -3) == -0.037037037037037035
