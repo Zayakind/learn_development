@@ -2,7 +2,7 @@ def search_digit_indexes(value: str) -> list:
     return [i for i in range(len(value)) if value[i].isdigit()]
 
 
-def count_white_walkers(substring: str) -> int:
+def search_white_walkers(substring: str) -> int:
     return substring.count('=')
 
 
@@ -14,11 +14,10 @@ def white_walkers(village: str) -> bool:
 
     count_pairs, count_walkers = 0, 0
     for i in range(len(digit_indexes) - 1):
-        if (int(village[digit_indexes[i]]) +
-                int(village[digit_indexes[i + 1]]) != 10):
+        if int(village[digit_indexes[i]]) + int(village[digit_indexes[i + 1]]) != 10:
             continue
         count_pairs += 1
-        amount_white_walkers = count_white_walkers(
+        amount_white_walkers = search_white_walkers(
             village[digit_indexes[i]:digit_indexes[i + 1] + 1]
         )
         if amount_white_walkers == 3:
