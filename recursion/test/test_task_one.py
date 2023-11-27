@@ -1,4 +1,4 @@
-from task_one import exponentiation
+from ..task_one import exponentiation
 
 
 def test_1():
