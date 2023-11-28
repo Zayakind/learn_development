@@ -15,3 +15,7 @@ def test_3():
 
 def test_4():
     assert not checking_palindrom("аммаa")
+
+
+def test_6():
+    assert not checking_palindrom("fa")
