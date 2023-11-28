@@ -1,6 +1,4 @@
-import random
-
-from ..task_three import calculating_len
+from recursion.task_three import calculating_len
 
 
 def test_1():

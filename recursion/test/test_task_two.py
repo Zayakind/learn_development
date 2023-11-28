@@ -1,4 +1,4 @@
-from ..task_two import summ
+from recursion.task_two import summ
 
 
 def test_1():
