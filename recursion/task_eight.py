@@ -8,7 +8,7 @@ def search_files(directory, files: list):
         full_path = os.path.join(directory, entry)
         if os.path.isfile(full_path):
             files.append(full_path)
-        elif os.path.isdir(full_path):
+        if os.path.isdir(full_path):
             search_files(full_path, files)
 
 
