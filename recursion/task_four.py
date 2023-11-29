@@ -3,4 +3,4 @@ def checking_palindrom(data: str):
         return True
     if data[0] != data[-1]:
         return False
-    return checking_palindrom(data[1:-1])
+    return checking_palindrom(data)
