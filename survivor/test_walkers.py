@@ -1,4 +1,5 @@
-from white_walkers_26 import white_walkers
+# from white_walkers_26 import white_walkers
+from eight_algoritms.white_walkers import white_walkers
 
 
 def test_1():
