@@ -1,4 +1,4 @@
-from MatrixTurn_24 import MatrixTurn
+from survivor.MatrixTurn_24 import MatrixTurn
 
 
 def test_1():

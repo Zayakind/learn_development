@@ -1,4 +1,4 @@
-from Football_27 import Football
+from survivor.Football_27 import Football
 
 
 def test_1():

@@ -1,4 +1,4 @@
-from TreeOfLife_23 import TreeOfLife
+from survivor.TreeOfLife_23 import TreeOfLife
 
 
 def test_1():

@@ -1,4 +1,4 @@
-from SherlockValidString_22 import *
+from survivor.SherlockValidString_22 import *
 
 
 def test_1():
