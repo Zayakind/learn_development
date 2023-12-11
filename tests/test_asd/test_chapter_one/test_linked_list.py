@@ -1,17 +1,6 @@
 from asd.chapter_one.linked_list import Node, LinkedList, sum_linked_lists
 
 
-# Для проверки напишем тесты
-# Создание связанных списков
-# linked_list = LinkedList()
-# list1.insert(None, Node(1))
-# list1.insert(list1.head, Node(2))
-# list1.insert(list1.head.next, Node(3))
-#
-# list2 = LinkedList()
-# list2.insert(None, Node(4))
-# list2.insert(list2.head, Node(5))
-# list2.insert(list2.head.next, Node(6))
 def create_node(count: int) -> list[Node]:
     return [Node(i+1) for i in range(count)]
 
