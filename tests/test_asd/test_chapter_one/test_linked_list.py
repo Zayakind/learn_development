@@ -1,5 +1,6 @@
 from asd.chapter_one.linked_list import Node, LinkedList, sum_linked_lists
 
+import pytest
 
 def create_node(count: int) -> list[Node]:
     return [Node(i+1) for i in range(count)]
@@ -12,12 +13,13 @@ def test_add_tail():
     assert linked_list.head == node_one
 
 
-def test_print_all_nodes():
+def test_print_all_nodes(capsys):
     linked_list = LinkedList()
     linked_list.add_in_tail(Node(1))
     linked_list.add_in_tail(Node(2))
     linked_list.add_in_tail(Node(3))
     linked_list.print_all_nodes()
+    assert capsys.readouterr().out.replace("\n", " ").strip() == "1 2 3"
 
 
 def test_find():
