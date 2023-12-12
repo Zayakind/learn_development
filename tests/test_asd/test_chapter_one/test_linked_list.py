@@ -6,6 +6,30 @@ def create_node(count: int) -> list[Node]:
     return [Node(i+1) for i in range(count)]
 
 
+def test_delete_is_empty_list():
+    linked_list = LinkedList()
+    assert not linked_list.delete(1)
+
+
+def test_find_is_empty_list():
+    linked_list = LinkedList()
+    assert not linked_list.find(1)
+
+
+def test_find_all_is_empty_list():
+    linked_list = LinkedList()
+    assert not linked_list.find_all(1)
+
+
+def test_delete_is_one_element_list():
+    linked_list = LinkedList()
+    node_one = Node(1)
+    linked_list.add_in_tail(node_one)
+    linked_list.delete(1)
+    assert linked_list.head is None
+    assert linked_list.tail is None
+
+
 def test_add_tail():
     linked_list = LinkedList()
     node_one = Node(1)
@@ -72,8 +96,8 @@ def test_delete_node_all_value():
     linked_list.add_in_tail(node_2)
     linked_list.add_in_tail(node_3)
     linked_list.add_in_tail(node_4)
-    linked_list.delete(3, all=True)
-    assert not linked_list.find_all(3)
+    linked_list.delete(2, all=True)
+    assert not linked_list.find_all(2)
 
 
 def test_clean_list():
@@ -96,6 +120,16 @@ def test_get_len_list():
     assert linked_list.len() == 3
 
 
+def test_delete_tail_element():
+    node_1, node_2, node_3 = create_node(3)
+    linked_list = LinkedList()
+    linked_list.add_in_tail(node_1)
+    linked_list.add_in_tail(node_2)
+    linked_list.add_in_tail(node_3)
+    linked_list.delete(node_3.value)
+    assert linked_list.len() == 2
+
+
 def test_insert_node():
     node_1, node_2, node_3 = create_node(3)
     linked_list = LinkedList()
@@ -106,6 +140,18 @@ def test_insert_node():
     linked_list.insert(linked_list.head.next, node_target)
     assert linked_list.find(7).next.value == node_3.value
     assert linked_list.find(2).next.value == node_target.value
+
+
+def test_insert_tail_list():
+    node_1, node_2, node_3 = create_node(3)
+    linked_list = LinkedList()
+    node_target = Node(7)
+    linked_list.add_in_tail(node_1)
+    linked_list.add_in_tail(node_2)
+    linked_list.add_in_tail(node_3)
+    linked_list.insert(linked_list.tail, node_target)
+    assert linked_list.find(7).next is None
+    assert linked_list.find(3).next.value == node_target.value
 
 
 def test_check_sum_lists():
