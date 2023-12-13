@@ -30,6 +30,29 @@ def test_delete_is_one_element_list():
     assert linked_list.tail is None
 
 
+def test_delete_is_one_element_tail_list():
+    node_1, node_2, node_3 = create_node(3)
+    linked_list = LinkedList()
+    linked_list.add_in_tail(node_1)
+    linked_list.add_in_tail(node_2)
+    linked_list.add_in_tail(node_3)
+    linked_list.delete(3)
+    assert linked_list.head is node_1
+    assert linked_list.tail is node_2
+
+
+def test_delete_is_two_element_tail_list():
+    node_1, node_2, node_3 = create_node(3)
+    linked_list = LinkedList()
+    linked_list.add_in_tail(node_1)
+    linked_list.add_in_tail(node_2)
+    linked_list.add_in_tail(node_3)
+    linked_list.delete(2)
+    linked_list.delete(3)
+    assert linked_list.head is node_1
+    assert linked_list.tail is node_1
+
+
 def test_add_tail():
     linked_list = LinkedList()
     node_one = Node(1)
@@ -38,10 +61,11 @@ def test_add_tail():
 
 
 def test_print_all_nodes(capsys):
+    node_1, node_2, node_3 = create_node(3)
     linked_list = LinkedList()
-    linked_list.add_in_tail(Node(1))
-    linked_list.add_in_tail(Node(2))
-    linked_list.add_in_tail(Node(3))
+    linked_list.add_in_tail(node_1)
+    linked_list.add_in_tail(node_2)
+    linked_list.add_in_tail(node_3)
     linked_list.print_all_nodes()
     assert capsys.readouterr().out.replace("\n", " ").strip() == "1 2 3"
 

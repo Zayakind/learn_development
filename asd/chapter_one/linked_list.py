@@ -7,6 +7,9 @@ class Node:
         self.value = v
         self.next = None
 
+    def __str__(self):
+        return str(self.value)
+
 
 class LinkedList:
 
@@ -47,23 +50,22 @@ class LinkedList:
         return result
 
     def delete(self, val: Any, all=False) -> None:
-        if self.head is None:
-            return
+        current = self.head
+        prev = None
+        while current:
+            if current.value == val:
+                if current == self.head:
+                    self.head = current.next
+                else:
+                    prev.next = current.next
 
-        if self.head.value == val:
-            if self.head is self.tail:
-                self.tail = self.head.next
-            self.head = self.head.next
-            if not all:
-                return
-        current_node = self.head
-        while current_node.next:
-            if current_node.next.value == val:
-                current_node.next = current_node.next.next
+                if current == self.tail:
+                    self.tail = prev
+
                 if not all:
                     return
-            else:
-                current_node = current_node.next
+            prev = current
+            current = current.next
 
     def clean(self) -> None:
         self.head = None
