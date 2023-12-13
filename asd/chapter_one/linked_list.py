@@ -56,15 +56,16 @@ class LinkedList:
             if current.value == val:
                 if current == self.head:
                     self.head = current.next
+                    if self.tail == self.head:
+                        self.tail = current.next
                 else:
                     prev.next = current.next
-
                 if current == self.tail:
                     self.tail = prev
-
                 if not all:
                     return
-            prev = current
+            else:
+                prev = current
             current = current.next
 
     def clean(self) -> None:
@@ -73,7 +74,7 @@ class LinkedList:
 
     def len(self) -> int | None:
         if self.head is None:
-            return None
+            return 0
         result = 0
         node = self.head
         while node is not None:
