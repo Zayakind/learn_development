@@ -90,6 +90,9 @@ class LinkedList:
             new_node.next = self.head
             self.head = new_node
             return
+        if after_node is self.tail:
+            self.add_in_tail(new_node)
+            return
         new_node.next, after_node.next = after_node.next, new_node
 
 
