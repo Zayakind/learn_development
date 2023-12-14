@@ -46,7 +46,7 @@ class LinkedList:
                 result.append(node)
             node = node.next
         if result is None or result == []:
-            return None
+            return result
         return result
 
     def delete(self, val: Any, all=False) -> None:
