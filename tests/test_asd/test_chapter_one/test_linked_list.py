@@ -175,9 +175,16 @@ def test_checking_in_tail_an_empty_list():
 def test_checking_insertion_into_an_empty_list():
     node_1 = create_node(1)[0]
     linked_list = LinkedList()
-    linked_list.insert(new_node=node_1)
+    linked_list.insert(after_node=None, new_node=node_1)
     assert linked_list.head is node_1 and linked_list.len() == 1
     assert linked_list.tail is node_1
+
+
+def test_checking_insertion_into_an_empty_list_2():
+    node_1, node_2 = create_node(2)
+    linked_list = LinkedList()
+    linked_list.insert(after_node=node_2, new_node=node_1)
+    assert linked_list.head is None and linked_list.len() == 0
 
 
 def test_checking_for_insertion_into_a_non_empty_list():

@@ -82,7 +82,7 @@ class LinkedList:
             node = node.next
         return result
 
-    def insert(self, new_node: Node, after_node: Node | None = None) -> None:
+    def insert(self, after_node: Node | None, new_node: Node) -> None:
         if after_node is None:
             if self.len() == 0:
                 self.add_in_tail(new_node)
