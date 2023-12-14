@@ -165,11 +165,19 @@ def test_checking_the_correctness_of_changing_the_length_of_the_list():
     assert linked_list.len() == 0
 
 
-def test_checking_insertion_into_an_empty_list():
+def test_checking_in_tail_an_empty_list():
     node_1 = create_node(1)[0]
     linked_list = LinkedList()
     linked_list.add_in_tail(node_1)
     assert linked_list.head is node_1 and linked_list.len() == 1
+
+
+def test_checking_insertion_into_an_empty_list():
+    node_1 = create_node(1)[0]
+    linked_list = LinkedList()
+    linked_list.insert(new_node=node_1)
+    assert linked_list.head is node_1 and linked_list.len() == 1
+    assert linked_list.tail is node_1
 
 
 def test_checking_for_insertion_into_a_non_empty_list():
