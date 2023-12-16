@@ -206,4 +206,3 @@ def test_checking_for_insertion_into_a_non_empty_list_in_tail():
     node_5 = Node(2)
     linked_list.insert(node_4, node_5)
     assert linked_list.len() == 5 and linked_list.tail is node_5
-
