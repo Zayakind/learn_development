@@ -51,10 +51,10 @@ class LinkedList2:
         if self.head is None:
             return None
         if self.head.next is None:
-            if self.head.value != val:
+            if self.head.value == val:
+                self.head = None
+                self.tail = None
                 return
-            self.head = None
-            self.tail = None
         if self.head.value == val:
             self.head = self.head.next
             self.head.prev = None

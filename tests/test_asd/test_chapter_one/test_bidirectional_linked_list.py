@@ -94,6 +94,16 @@ def test_delete_empty_list():
     assert linked_list.delete(3) is None
 
 
+def test_delete_one_elem_list():
+    linked_list = LinkedList2()
+    node = Node(1)
+    linked_list.add_in_tail(node)
+    linked_list.delete(1)
+    assert linked_list.len() == 0
+    assert linked_list.head is None
+    assert linked_list.tail is None
+
+
 def test_delete_several_elem():
     linked_list = LinkedList2()
     node_1, node_2, node_3, node_5 = create_node(4)
