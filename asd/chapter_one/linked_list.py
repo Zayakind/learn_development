@@ -1,17 +1,17 @@
 from typing import Any
 
 
-class Node:
+class Node(object):
 
-    def __init__(self, v):
-        self.value = v
+    def __init__(self, value):
+        self.value = value
         self.next = None
 
     def __str__(self):
         return str(self.value)
 
 
-class LinkedList:
+class LinkedList(object):
 
     def __init__(self):
         self.head = None
