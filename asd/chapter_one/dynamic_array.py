@@ -57,8 +57,7 @@ class DynArray:
         if self.count == i:
             self.append(itm)
             return
-        if i < 0 or i > self.count:
-            raise IndexError('Index is out of bounds')
+        self[i]
         count = self.count + 1
         if count > self.capacity:
             self.resize(2 * self.capacity)
@@ -69,8 +68,7 @@ class DynArray:
         self.array[i] = itm
 
     def delete(self, i: int) -> None:
-        if i < 0 or i > self.count:
-            raise IndexError('Index is out of bounds')
+        self[i]
         move_back_indices = list(range(i + 1, self.count))
         for ind in move_back_indices:
             self.array[ind - 1] = self.array[ind]
