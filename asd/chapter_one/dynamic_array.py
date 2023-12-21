@@ -35,7 +35,7 @@ class DynArray:
     def make_array(self, new_capacity: int):
         return (new_capacity * ctypes.py_object)()
 
-    def __getitem__(self, i: int) -> None:
+    def __getitem__(self, i: int):
         if i < 0 or i >= self.count:
             raise IndexError('Index is out of bounds')
         return self.array[i]
