@@ -6,7 +6,7 @@ def test_enqueue():
     queue.enqueue('one')
     queue.enqueue('two')
     queue.enqueue('three')
-    assert queue.queue[0] == "one"
+    assert queue.items[0] == "one"
 
 
 def test_dequeue():
@@ -16,7 +16,7 @@ def test_dequeue():
     queue.enqueue('three')
     queue.dequeue()
     assert queue.size() == 2
-    assert queue.queue[0] == "two"
+    assert queue.items[0] == "two"
 
 
 def test_split_queue():
@@ -27,4 +27,4 @@ def test_split_queue():
     queue.enqueue('four')
     queue.enqueue('five')
     split_queue(3, queue)
-    assert queue.queue[0] == "four"
+    assert queue.items[0] == "four"
