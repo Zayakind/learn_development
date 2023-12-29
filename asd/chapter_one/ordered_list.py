@@ -10,142 +10,189 @@ class OrderedList:
         self.head = None
         self.tail = None
         self.__ascending = asc
-
-    def get_asc(self) -> None:
-        return self.__ascending
-
-    def change_asc(self) -> None:
-        if self.get_asc():
-            self.__ascending = False
-            return
-        self.__ascending = True
+        self._len = 0
 
     def compare(self, v1, v2):
-        if self.get_asc():
-            if v1 < v2:
-                return -1
-            elif v1 > v2:
-                return 1
-            else:
-                return 0
-        else:
-            if v1 < v2:
-                return 1
-            elif v1 > v2:
-                return -1
-            else:
-                return 0
+        if v1 < v2:
+            return -1
+        if v1 > v2:
+            return 1
+        return 0
 
     def add(self, value):
-        node_for_add = Node(value)
-        if self.head is None:
-            self.head = node_for_add
-            self.tail = node_for_add
+        # if list clear
+        if self.head == None:
+            self.head = Node(value)
+            self.tail = self.head
+            self._len += 1
             return
-        if self.compare(value, self.tail.value) >= 0:
-            node_for_add.next = None
-            node_for_add.prev = self.tail
-            self.tail.next = node_for_add
-            self.tail = node_for_add
+
+        # 1 elements list
+        if self.len() == 1:
+            node = Node(value)
+            compare_res = self.compare(value, self.head.value)
+            if (self.__ascending and compare_res >= 0) or (not self.__ascending and compare_res < 0):
+                self.tail = node
+            else:
+                self.head = node
+            self.tail.prev = self.head
+            self.head.next = self.tail
+            self._len += 1
             return
-        if self.compare(self.head.value, value) >= 0:
-            self.head.prev = node_for_add
-            node_for_add.next = self.head
-            self.head = node_for_add
-            node_for_add.prev = None
-            return
-        node = self.head
-        while node:
-            if self.compare(node.value, value) >= 0:
-                node_for_add.prev = node.prev
-                node_for_add.next = node
-                node.prev.next = node_for_add
-                node.prev = node_for_add
+
+        self._len += 1
+
+        if self.__ascending:
+            # value bigger tail value
+            if self.compare(value, self.tail.value) == 1:
+                node = Node(value)
+                node.prev = self.tail
+                self.tail.next = node
+                self.tail = node
                 return
-            node = node.next
+
+            # value little head value
+            if self.compare(value, self.head.value) == -1:
+                node = Node(value)
+                node.next = self.head
+                self.head.prev = node
+                self.head = node
+                return
+
+            # brute force all value
+            el = self.head.next
+            while el != None:
+                if self.compare(value, el.value) <= 0:
+                    node = Node(value)
+                    node.next = el
+                    node.prev = el.prev
+                    node.prev.next = node
+                    el.prev = node
+                    return
+                el = el.next
+        # desc
+        else:
+            # value bigger head value
+            if self.compare(value, self.head.value) == 1:
+                node = Node(value)
+                node.next = self.head
+                self.head.prev = node
+                self.head = node
+                return
+
+            # value littles tail value
+            if self.compare(value, self.tail.value) == -1:
+                node = Node(value)
+                node.prev = self.tail
+                self.tail.next = node
+                self.tail = node
+                return
+
+            # brute force all value
+            el = self.head.next
+            while el != None:
+                if self.compare(value, el.value) >= 0:
+                    node = Node(value)
+                    node.next = el
+                    node.prev = el.prev
+                    node.prev.next = node
+                    el.prev = node
+                    return
+                el = el.next
 
     def find(self, val):
         node = self.head
-        while node:
-            if self.compare(node.value, val) > 0:
-                return None
-            elif node.value == val:
+        while node != None:
+            if self.compare(node.value, val) == 0:
                 return node
+            if self.compare(node.value, val) == 1 and self.__ascending:
+                return None
+            if self.compare(node.value, val) == -1 and not self.__ascending:
+                return None
+
             node = node.next
+
+        return None
 
     def delete(self, val):
         node = self.find(val)
-        if node:
-            if node == self.head:
-                if self.len() == 1:
-                    self.head = None
-                    self.tail = None
-                    return
-                self.head = self.head.next
-                self.head.prev = None
-                return
-            if node == self.tail:
-                self.tail.prev.next = None
-                self.tail = self.tail.prev
-                return
-            node.next.prev = node.prev
-            node.prev.next = node.next
-            return
-        return False
 
-    def clean(self, asc=False):
+        if node == None:
+            return
+
+        self._len -= 1
+
+        if node == self.head == self.tail:   # 1 element list
+            self.head = None
+            self.tail = None
+            return
+
+        if node == self.head:   # is first
+            self.head = node.next
+            # if self.head != None:
+            self.head.prev = None
+            return
+
+        if node == self.tail:   # is last
+            self.tail = node.prev
+            # if self.tail != None:
+            self.tail.next = None
+            return
+
+        # if node.prev != None:
+        node.prev.next = node.next
+        # if node.next != None:
+        node.next.prev = node.prev
+
+    def clean(self, asc):
         self.head = None
         self.tail = None
-        if asc:
-            self.change_asc()
+        self.__ascending = asc
+        self._len = 0
 
     def len(self):
+        return self._len
+        '''
         node = self.head
-        length = 0
-        while node is not None:
-            length += 1
+        len = 0
+        while node != None:
+            len += 1
             node = node.next
-        return length
+
+        if len != self._len:
+            raise(SyntaxError)
+
+        return len
+        '''
 
     def get_all(self):
         r = []
         node = self.head
-        while node:
+        while node != None:
             r.append(node)
+            node = node.next
+        return r
+
+    def get_all_values(self):
+        r = []
+        node = self.head
+        while node != None:
+            r.append(node.value)
             node = node.next
         return r
 
 
 class OrderedStringList(OrderedList):
     def __init__(self, asc):
-        super().__init__(asc)
-        self.head = None
-        self.tail = None
-        self.__ascending = asc
+        super(OrderedStringList, self).__init__(asc)
 
-    def get_asc(self):
-        return self.__ascending
+    def compare(self, v1, v2):
+        v1 = v1.strip(' ')
+        v2 = v2.strip(' ')
 
-    def change_asc(self):
-        if self.get_asc():
-            self.__ascending = False
-        else:
-            self.__ascending = True
+        if v1 < v2 or len(v1) < len(v2):
+            return -1
+        if v1 > v2 or len(v1) > len(v2):
+            return 1
 
-    def compare(self, value1, value2):
-        v1 = str(value1)
-        v2 = str(value2)
-        if self.get_asc():
-            if v1.strip() < v2.strip():
-                return -1
-            elif v1.strip() > v2.strip():
-                return 1
-            else:
-                return 0
-        else:
-            if v1.strip() < v2.strip():
-                return 1
-            elif v1.strip() > v2.strip():
-                return -1
-            else:
-                return 0
+        return 0
