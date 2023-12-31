@@ -20,14 +20,12 @@ class OrderedList:
         return 0
 
     def add(self, value):
-        # if list clear
         if self.head == None:
             self.head = Node(value)
             self.tail = self.head
             self._len += 1
             return
 
-        # 1 elements list
         if self.len() == 1:
             node = Node(value)
             compare_res = self.compare(value, self.head.value)
@@ -43,7 +41,6 @@ class OrderedList:
         self._len += 1
 
         if self.__ascending:
-            # value bigger tail value
             if self.compare(value, self.tail.value) == 1:
                 node = Node(value)
                 node.prev = self.tail
@@ -51,7 +48,6 @@ class OrderedList:
                 self.tail = node
                 return
 
-            # value little head value
             if self.compare(value, self.head.value) == -1:
                 node = Node(value)
                 node.next = self.head
@@ -59,7 +55,6 @@ class OrderedList:
                 self.head = node
                 return
 
-            # brute force all value
             el = self.head.next
             while el != None:
                 if self.compare(value, el.value) <= 0:
@@ -72,7 +67,6 @@ class OrderedList:
                 el = el.next
         # desc
         else:
-            # value bigger head value
             if self.compare(value, self.head.value) == 1:
                 node = Node(value)
                 node.next = self.head
@@ -80,7 +74,6 @@ class OrderedList:
                 self.head = node
                 return
 
-            # value littles tail value
             if self.compare(value, self.tail.value) == -1:
                 node = Node(value)
                 node.prev = self.tail
@@ -88,7 +81,6 @@ class OrderedList:
                 self.tail = node
                 return
 
-            # brute force all value
             el = self.head.next
             while el != None:
                 if self.compare(value, el.value) >= 0:
@@ -122,26 +114,22 @@ class OrderedList:
 
         self._len -= 1
 
-        if node == self.head == self.tail:   # 1 element list
+        if node == self.head == self.tail:
             self.head = None
             self.tail = None
             return
 
-        if node == self.head:   # is first
+        if node == self.head:
             self.head = node.next
-            # if self.head != None:
             self.head.prev = None
             return
 
-        if node == self.tail:   # is last
+        if node == self.tail:
             self.tail = node.prev
-            # if self.tail != None:
             self.tail.next = None
             return
 
-        # if node.prev != None:
         node.prev.next = node.next
-        # if node.next != None:
         node.next.prev = node.prev
 
     def clean(self, asc):
@@ -152,18 +140,6 @@ class OrderedList:
 
     def len(self):
         return self._len
-        '''
-        node = self.head
-        len = 0
-        while node != None:
-            len += 1
-            node = node.next
-
-        if len != self._len:
-            raise(SyntaxError)
-
-        return len
-        '''
 
     def get_all(self):
         r = []
