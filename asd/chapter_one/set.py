@@ -32,12 +32,10 @@ class PowerSet:
 
     def union(self, set2):
         result = PowerSet()
-        for current, other in zip(self.slots, set2):
-            if current != other:
-                result.put(current)
-                result.put(other)
-                continue
-            result.put(current)
+        for i in self.slots:
+            result.put(i)
+        for y in set2.slots:
+            result.put(y)
         return result
 
     def difference(self, set2):
