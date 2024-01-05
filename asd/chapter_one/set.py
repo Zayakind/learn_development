@@ -24,9 +24,10 @@ class PowerSet:
 
     def intersection(self, set2):
         result = PowerSet()
-        for current, other in zip(self.slots, set2):
-            if current == other:
-                result.put(current)
+        for i in self.slots:
+            for y in set2.slots:
+                if i == y:
+                    result.put(i)
         return result
 
     def union(self, set2):
