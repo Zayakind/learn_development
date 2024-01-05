@@ -40,9 +40,10 @@ class PowerSet:
 
     def difference(self, set2):
         result = PowerSet()
-        for current, other in zip(self.slots, set2):
-            if current != other:
-                result.put(current)
+        for element in self.slots:
+            if set2.get(element) is False:
+                result.put(element)
+        return result
 
     def issubset(self, set2):
         counter = 0
