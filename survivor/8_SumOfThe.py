@@ -7,7 +7,3 @@ def SumOfThe(N: int, data: list[int]) -> int:
         summ = sum(temp_list)
         if summ == value:
             return value
-
-
-example = [10, -25, -45, -35, 5]
-print(SumOfThe(len(example), example))

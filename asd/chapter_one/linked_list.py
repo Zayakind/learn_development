@@ -75,12 +75,12 @@ class LinkedList(object):
     def len(self) -> int | None:
         if self.head is None:
             return 0
-        result = 0
+        size = 0
         node = self.head
         while node is not None:
-            result += 1
+            size += 1
             node = node.next
-        return result
+        return size
 
     def insert(self, after_node: Node | None, new_node: Node) -> None:
         if after_node is None:
@@ -99,11 +99,11 @@ class LinkedList(object):
 def sum_linked_lists(one: LinkedList, two: LinkedList) -> LinkedList | None:
     if one.len() != two.len():
         return None
-    result = LinkedList()
+    linked_list = LinkedList()
     current_1 = one.head
     current_2 = two.head
     while current_1 is not None and current_2 is not None:
-        result.add_in_tail(Node(current_1.value + current_2.value))
+        linked_list.add_in_tail(Node(current_1.value + current_2.value))
         current_1 = current_1.next
         current_2 = current_2.next
-    return result
+    return linked_list

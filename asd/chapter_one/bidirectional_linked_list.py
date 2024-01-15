@@ -37,15 +37,15 @@ class LinkedList2:
         return None
 
     def find_all(self, val: Any) -> list:
-        result = []
+        found_values = []
         if self.head is None:
-            return result
+            return found_values
         node = self.head
         while node is not None:
             if node.value == val:
-                result.append(node)
+                found_values.append(node)
             node = node.next
-        return result
+        return found_values
 
     def delete(self, val: Any, all=False) -> None:
         if self.head is None:

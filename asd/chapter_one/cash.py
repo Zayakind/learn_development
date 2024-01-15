@@ -9,10 +9,10 @@ class NativeCache:
         self.hits = [0] * self.size
 
     def hash_fun(self, key):
-        hash = 0
+        calculated_hash = 0
         for pos in key:
-            hash += ord(pos) % self.size
-        return hash % self.size
+            calculated_hash += ord(pos) % self.size
+        return calculated_hash % self.size
 
     def is_key(self, key):
         if self.get(key) is not None:

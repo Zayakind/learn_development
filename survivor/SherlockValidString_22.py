@@ -1,6 +1,6 @@
 def calc_chars_frequency(in_string: str) -> dict:
-    result_dict = {c: in_string.count(c) for c in set(in_string)}
-    return result_dict
+    letter_counting = {c: in_string.count(c) for c in set(in_string)}
+    return letter_counting
 
 
 def check_password_valid(chars_frequency: list) -> bool:

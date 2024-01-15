@@ -1,15 +1,15 @@
 
 def format_result(data: str) -> str:
 
-    data = data[::-1]
+    reversed_data = data[::-1]
 
     while True:
-        if data[0] == "0" and len(data) > 1:
-            data = data[1:]
+        if reversed_data[0] == "0" and len(data) > 1:
+            reversed_data = reversed_data[1:]
         else:
             break
 
-    return data
+    return reversed_data
 
 
 def search_index(listed: list[str], index: int) -> int:

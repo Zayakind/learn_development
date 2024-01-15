@@ -3,22 +3,22 @@ from typing import Any
 
 class Stack:
     def __init__(self):
-        self.stack = []
+        self.items = []
 
     def size(self):
-        return len(self.stack)
+        return len(self.items)
 
     def pop(self) -> Any | None:
         if self.size() > 0:
-            return self.stack.pop(0)
+            return self.items.pop(0)
         return None
 
     def push(self, value: Any) -> None:
-        return self.stack.insert(0, value)
+        return self.items.insert(0, value)
 
     def peek(self):
         if self.size() > 0:
-            return self.stack[0]
+            return self.items[0]
         return None
 
 

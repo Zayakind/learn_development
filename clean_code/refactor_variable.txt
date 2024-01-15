@@ -1,0 +1,12 @@
+1. result - calculated_hash // Рассчитываемый хеш, который вернем из функции
+2. count - count_letter // Количество подсчитанных символов
+3. result - output_transform // возвращаемые трансформации
+4. result_dict - letter_counting // Подсчитанные символы
+5. sort_list - sorted_data // именем показываем что это сортированные данные
+6. data - sorted_data // указываем что это развернутые данные
+7. result - words // Список с найденными словами
+8. stack - items // указываем что это контейнер
+9. result - another_set // Другое множество
+10. result - size // Рассчитанные размер
+11. result - linked_list // Указываем конкретную структуру данных по ссылке в переменной
+12. result - found_values // Найденные значения

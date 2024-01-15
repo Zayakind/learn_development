@@ -25,7 +25,6 @@ def checker_subs(subs: str, data: list[str]) -> list[int]:
 
 
 def WordSearch(lens: int, s: str, subs: str) -> list[int]:
-    result = []
-    result = pars_string(result, s, lens)
+    words = pars_string([], s, lens)
 
-    return checker_subs(subs, result)
+    return checker_subs(subs, words)

@@ -3,11 +3,11 @@ def search_digit_indexes(value: str) -> list:
 
 
 def search_white_walkers(substring: str) -> int:
-    count = 0
-    for char in substring:
-        if char == '=':
-            count += 1
-    return count
+    count_letter = 0
+    for letter in substring:
+        if letter == '=':
+            count_letter += 1
+    return count_letter
 
 
 def white_walkers(village: str) -> bool:
