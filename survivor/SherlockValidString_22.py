@@ -3,16 +3,16 @@ def calc_chars_frequency(in_string: str) -> dict:
     return letter_counting
 
 
-def check_password_valid(chars_frequency: list) -> bool:
+def validation_password(chars_frequency: list) -> bool:
     result = all(x == chars_frequency[0] for x in chars_frequency)
     return result
 
 
 def SherlockValidString(in_string: str) -> bool:
-    dict_chars_frequency = calc_chars_frequency(in_string)
-    chars_frequency = list(dict_chars_frequency.values())
+    chars_frequency = calc_chars_frequency(in_string)
+    chars_frequency = list(chars_frequency.values())
 
-    if check_password_valid(chars_frequency):
+    if validation_password(chars_frequency):
         return True
 
     low_frequency, high_frequency = min(chars_frequency), max(chars_frequency)

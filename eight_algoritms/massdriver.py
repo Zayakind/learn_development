@@ -1,13 +1,13 @@
 def massdriver(activate: list[int]):
     nums = {}
-    temp = len(activate)
+    len_activate = len(activate)
 
     for i, num in enumerate(activate):
         if num in nums:
-            if nums[num] < temp:
-                temp = nums[num]
+            if nums[num] < len_activate:
+                len_activate = nums[num]
             continue
         nums[num] = i
-    if temp == len(activate):
+    if len_activate == len(activate):
         return -1
-    return temp
+    return len_activate

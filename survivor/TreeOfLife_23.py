@@ -37,9 +37,9 @@ class Tree:
                         (i, j + shift)
                     )
         branch_to_destroy.extend(temp_coords)
-        coords_elems_to_destroy = set(branch_to_destroy)
+        coords_destroy = set(branch_to_destroy)
 
-        for coord in coords_elems_to_destroy:
+        for coord in coords_destroy:
             i, j = coord[0], coord[1]
             self.tree[i][j] = 0
 

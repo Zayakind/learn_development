@@ -2,8 +2,8 @@ def one_rotation(matrix: list[str], row: int, line: int) -> None:
     top, bottom = 0, row - 1
     left, right = 0, line - 1
 
-    count_layers_rotated = int(row / 2)
-    for _ in range(count_layers_rotated):
+    amount_rotated = int(row / 2)
+    for _ in range(amount_rotated):
         top_left = matrix[left][left]
 
         for i in range(top, bottom):

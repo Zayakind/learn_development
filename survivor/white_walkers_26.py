@@ -17,9 +17,9 @@ def white_walkers(village: str) -> bool:
         if int(village[digit_indexes[i]]) + int(village[digit_indexes[i + 1]]) != 10:
             continue
         count_pairs += 1
-        amount_white_walkers = search_white_walkers(
+        amount_walkers = search_white_walkers(
             village[digit_indexes[i]:digit_indexes[i + 1] + 1]
         )
-        if amount_white_walkers == 3:
+        if amount_walkers == 3:
             count_walkers += 1
     return count_walkers == count_pairs
