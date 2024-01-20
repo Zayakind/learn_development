@@ -7,11 +7,11 @@ def LineAnalysis(line: str) -> bool:
     line = line[1:-1]
 
     parse_string = line.split('*')
-    check = True
+    equal = True
     example = parse_string[0]
 
     for i in parse_string:
         if i != example:
-            check = False
+            equal = False
 
-    return check
+    return equal

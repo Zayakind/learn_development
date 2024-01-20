@@ -12,7 +12,7 @@ def changed_data(data: list[int], index: int) -> list[int]:
 
 def MisterRobot(N: int, data: list[int]) -> bool:
 
-    check = False
+    is_equal = False
     sorted_data = data[:]
     sorted_data.sort()
 
@@ -24,6 +24,6 @@ def MisterRobot(N: int, data: list[int]) -> bool:
         N -= 1
 
     if sorted_data == data:
-        check = True
+        is_equal = True
 
-    return check
+    return is_equal

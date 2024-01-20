@@ -12,16 +12,16 @@ def create_map(row: int, column: int, data: str) -> list[list[int]]:
 
 def check_valid(maps: list[list[int]], example: list[list[int]]) -> bool:
 
-    check = False
+    is_valid_row = False
     search = example[0][0]
 
     for index_row, row in enumerate(maps):
         for index_col, value_col in enumerate(row):
             if row != maps[-1] and value_col == search and maps[index_row + 1][index_col] == example[1][0] and maps[index_row + 1][index_col + 1] == example[1][1]:
-                check = True
+                is_valid_row = True
                 break
 
-    return check
+    return is_valid_row
 
 
 def entry_map(card: list[list[int]], example: list[list[int]]) -> bool:

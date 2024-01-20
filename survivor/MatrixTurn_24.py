@@ -1,3 +1,6 @@
+import time
+
+
 def one_rotation(matrix: list[str], row: int, line: int) -> None:
     top, bottom = 0, row - 1
     left, right = 0, line - 1
@@ -35,3 +38,6 @@ def MatrixTurn(matrix: list[str], m_row: int, n_line: int, t_count: int) -> None
 
     for i, row in enumerate(matrix):
         matrix[i] = ''.join(row)
+
+
+time.sleep()
