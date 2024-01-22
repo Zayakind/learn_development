@@ -60,9 +60,9 @@ def capture_area(square: list[list], index_n: int, index_m: int) -> list[list]:
 
 
 def seizure_of_territory(square: list[list[int]], day_war: int) -> int:
-    double = deepcopy(square)
+    copy_square = deepcopy(square)
 
-    for index_n, value_n in enumerate(double):
+    for index_n, value_n in enumerate(copy_square):
         for index_m, value_m in enumerate(value_n):
             if value_m > 0:
                 capture_area(square, index_n, index_m)

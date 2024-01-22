@@ -2,8 +2,8 @@ from itertools import *
 
 
 def BiggerGreater(string: str) -> str:
-    sort_options = sorted(set(map(''.join, permutations(string))))
-    if len(sort_options) <= 1 or sort_options[-1] == string:
+    sorted_unique_options = sorted(set(map(''.join, permutations(string))))
+    if len(sorted_unique_options) <= 1 or sorted_unique_options[-1] == string:
         return ""
-    index = sort_options.index(string)
-    return sort_options[index+1]
+    index = sorted_unique_options.index(string)
+    return sorted_unique_options[index+1]

@@ -38,6 +38,3 @@ def MatrixTurn(matrix: list[str], m_row: int, n_line: int, t_count: int) -> None
 
     for i, row in enumerate(matrix):
         matrix[i] = ''.join(row)
-
-
-time.sleep()
