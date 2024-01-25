@@ -8,7 +8,7 @@ class TrafficLight(object):
         self.time_green = green_signal
         self.time_signal = self.time_red
 
-    def check(self):
+    def check_signal(self):
         return self.signal
 
     def run(self):

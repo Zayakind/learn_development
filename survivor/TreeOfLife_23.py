@@ -6,7 +6,7 @@ class Tree:
             for layer in layers
         ]
 
-    def to_string(self):
+    def convert_to_string(self):
         return [
             "".join(["+" if i == 1 else "." for i in layer])
             for layer in self.tree
@@ -48,4 +48,4 @@ def TreeOfLife(height: int, width: int, years: int, tree: list[str]):
     tree = Tree(tree)
     for year in range(years):
         tree.even_year() if year % 2 == 0 else tree.odd_year(height, width)
-    return tree.to_string()
+    return tree.convert_to_string()
