@@ -4,9 +4,9 @@ from typing import List, Any
 class SimpleTreeNode:
 
     def __init__(self, val, parent):
-        self.value = val  # значение в узле
-        self.parent = parent  # родитель или None для корня
-        self.children = []  # список дочерних узлов
+        self.NodeValue = val  # значение в узле
+        self.Parent = parent  # родитель или None для корня
+        self.Children = []  # список дочерних узлов
         self.level = None
 
     def __str__(self):
@@ -22,7 +22,7 @@ class SimpleTree:
         if parent_node is None:
             self.root = SimpleTreeNode(new_child, None)
             return
-        parent_node.children.append(new_child)
+        parent_node.Children.append(new_child)
         new_child.parent = parent_node
 
     def DeleteNode(self, node_to_delete: SimpleTreeNode) -> None:
@@ -36,7 +36,7 @@ class SimpleTree:
 
     def _get_all_node(self, node: SimpleTreeNode, result: list) -> None:
         result.append(node)
-        for child in node.children:
+        for child in node.Children:
             self._get_all_node(child, result)
 
     def FindNodesByValue(self, val):
@@ -45,9 +45,9 @@ class SimpleTree:
         return node_with_value
 
     def _find_nodes_by_value(self, val: Any, node: SimpleTreeNode, output_node: list) -> None:
-        if node.value == val:
+        if node.NodeValue == val:
             output_node.append(node)
-        for child in node.children:
+        for child in node.Children:
             self._find_nodes_by_value(val, child, output_node)
 
     def MoveNode(self, original_node: SimpleTreeNode, new_parent: SimpleTreeNode):
@@ -58,27 +58,27 @@ class SimpleTree:
         return len(self.GetAllNodes())
 
     def _get_count_tree(self, node: SimpleTreeNode, count) -> int:
-        if len(node.children) == 0:
+        if len(node.Children) == 0:
             return 0
-        if len(node.parent) > 0 and len(node.children) > 0:
+        if len(node.Parent) > 0 and len(node.Children) > 0:
             return 1
-        return sum([self._get_count_tree(child, count) for child in node.children])
+        return sum([self._get_count_tree(child, count) for child in node.Children])
 
     def LeafCount(self):
         return self._get_count_leaf(self.root, 0)
 
     def _get_count_leaf(self, node: SimpleTreeNode, count) -> int:
-        if len(node.children) == 0:
+        if len(node.Children) == 0:
             return 1
-        return sum([self._get_count_leaf(child, count) for child in node.children])
+        return sum([self._get_count_leaf(child, count) for child in node.Children])
 
     def set_level_tree(self):
         self._set_level(self.root)
 
     def _set_level(self, node: SimpleTreeNode):
-        if not node.parent:
+        if not node.Parent:
             node.level = 1
         if not node.level:
-            node.level = node.parent.level + 1
-        for child in node.children:
+            node.level = node.Parent.level + 1
+        for child in node.Children:
             self._set_level(child)
