@@ -16,22 +16,22 @@ class SimpleTreeNode:
 class SimpleTree:
 
     def __init__(self, root: SimpleTreeNode = None):
-        self.root = root  # корень, может быть None
+        self.Root = root  # корень, может быть None
 
     def AddChild(self, parent_node: SimpleTreeNode, new_child: SimpleTreeNode) -> None:
         if parent_node is None:
-            self.root = SimpleTreeNode(new_child, None)
+            self.Root = SimpleTreeNode(new_child, None)
             return
         parent_node.Children.append(new_child)
-        new_child.parent = parent_node
+        new_child.Parent = parent_node
 
     def DeleteNode(self, node_to_delete: SimpleTreeNode) -> None:
-        node_to_delete.parent.children.remove(node_to_delete)
-        node_to_delete.parent = None
+        node_to_delete.Parent.Children.remove(node_to_delete)
+        node_to_delete.Parent = None
 
     def GetAllNodes(self) -> List:
         result = []
-        self._get_all_node(self.root, result)
+        self._get_all_node(self.Root, result)
         return result
 
     def _get_all_node(self, node: SimpleTreeNode, result: list) -> None:
@@ -41,7 +41,7 @@ class SimpleTree:
 
     def FindNodesByValue(self, val):
         node_with_value = []
-        self._find_nodes_by_value(val, self.root, node_with_value)
+        self._find_nodes_by_value(val, self.Root, node_with_value)
         return node_with_value
 
     def _find_nodes_by_value(self, val: Any, node: SimpleTreeNode, output_node: list) -> None:
@@ -65,7 +65,7 @@ class SimpleTree:
         return sum([self._get_count_tree(child, count) for child in node.Children])
 
     def LeafCount(self):
-        return self._get_count_leaf(self.root, 0)
+        return self._get_count_leaf(self.Root, 0)
 
     def _get_count_leaf(self, node: SimpleTreeNode, count) -> int:
         if len(node.Children) == 0:
@@ -73,7 +73,7 @@ class SimpleTree:
         return sum([self._get_count_leaf(child, count) for child in node.Children])
 
     def set_level_tree(self):
-        self._set_level(self.root)
+        self._set_level(self.Root)
 
     def _set_level(self, node: SimpleTreeNode):
         if not node.Parent:

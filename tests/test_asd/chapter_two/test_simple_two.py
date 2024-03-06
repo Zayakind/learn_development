@@ -26,4 +26,3 @@ def test_add_child(simple_tree):
     node_3 = simple_tree.FindNodesByValue(3)
     simple_tree.set_level_tree()
     print(leaf, tree)
-
